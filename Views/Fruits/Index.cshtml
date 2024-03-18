@@ -1,0 +1,74 @@
+﻿@model IEnumerable<FruitIMSite.Models.Fruit>
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+  <form asp-action="Index" method="get">
+      <div class="for-actions no-color">
+          <p>
+                Fruit picked after: <input type="date" name="DateFilter" value="@ViewData["DateFilter"]"/>
+              <input type="submit" value="Filter" class="btn btn-default" />
+              <a asp-action="Index">Clear Filter</a>
+          </p>
+      </div>
+  </form>
+    <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+            <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FruitType.FruitName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePicked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasSeeds)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FruitType.FruitName)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color.Name)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td aligh="right">
+                @Html.DisplayFor(modelItem => item.DatePicked)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.HasSeeds)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
+
